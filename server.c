@@ -52,7 +52,7 @@ void *Child_Main(void *ptr)
         if(cycle && read(fd, &csock, read_size) > 0)
         {
             pthread_mutex_unlock(&ch_ready_lock);
-            bytes_read = recv(sock, buf, 16, 0);
+            bytes_read = recv(csock, buf, 16, 0);
             printf("thread %d %s= %d bytes\n", *num, buf, bytes_read);
             send(csock, buf2, sizeof(buf2), 0);
             pthread_mutex_lock(&ch_ready_lock);
